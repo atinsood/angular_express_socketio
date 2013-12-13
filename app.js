@@ -1,5 +1,5 @@
 var express = require("express"),
-    socket = require("./routes/sockets.js"),
+    socket = require("./routes/socket.js"),
     api = require("./routes/api.js"),
     http = require("http"),
     path = require("path");
@@ -26,10 +26,12 @@ app.get('/', function (request, response) {
     response.render('index.html')
 });
 
-var port = process.env.PORT || 5000;
-app.listen(port, function () {
-    console.log("Listening on " + port);
-});
+/*
+ var port = process.env.PORT || 9000;
+ app.listen(port, function () {
+ console.log("Listening on " + port);
+ });
+ */
 
 // Socket.io Communication
 io.sockets.on('connection', require('./routes/socket.js'));
@@ -38,6 +40,6 @@ io.sockets.on('connection', require('./routes/socket.js'));
  * Start Server
  */
 
-server.listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
+server.listen(9000, function () {
+    console.log('Express server listening on port ' + 9000);
 });
