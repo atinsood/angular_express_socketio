@@ -9,7 +9,6 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
 app.use(express.logger());
-
 // Configuration
 
 app.configure(function () {
@@ -23,7 +22,8 @@ app.configure(function () {
 });
 
 app.get('/', function (request, response) {
-    response.render('index.html')
+    //response.render('index.html')
+    response.render("index.html");
 });
 
 /*
