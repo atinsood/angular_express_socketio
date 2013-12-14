@@ -1,19 +1,8 @@
 /*
  * Serve content over a socket
  */
-
 module.exports = function (socket) {
-    /*
-     socket.emit('send:name', {
-     name: 'Bob'
-     });
 
-     setInterval(function () {
-     socket.emit('send:time', {
-     time: (new Date()).toString()
-     });
-     }, 1000);
-     */
     // send the new user their name and a list of users
     socket.emit('init', {
         username: 'usr ' + Date.now()
