@@ -2,25 +2,33 @@
 
 angular.module('socketioApp')
     .controller('MainCtrl', function ($scope, socketService) {
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
 
-        socketService.on('init', function (data) {
-            console.log('Socket was intialized');
+        $scope.usrmsg = '';
+        //$scope.messages = [username :'', text:''];
+        $scope.messages = [];
+        $scope.users = [];
+
+        socketService.on('init', function (usr) {
+            console.log('user joined the chat room');
+            $scope.users.push(usr);
+
         });
 
         socketService.on('respond:message', function (message) {
-            console.log('Client received the response message from server');
+            console.log('Client received the response message from server '
+                + message.username + " and text " + message.text);
+            $scope.messages.push(message);
         });
 
 
         $scope.sendMessage = function () {
-            console.log("Sending message to server");
+            console.log("Sending message to server " + $scope.users[0]['username']);
             socketService.emit('send:message', {
-                user: 'Bob'
+                username: $scope.users[0]['username'],
+                text: $scope.usrmsg
+                //username: 'a',
+                //text: "hello from " + "a"
             });
         };
-    });
+    })
+;

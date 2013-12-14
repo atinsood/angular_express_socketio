@@ -1,44 +1,29 @@
-<div class="container">
-    <form class="navbar-form pull-right" ng-submit="sendMessage()">
-        <div class="row">
-            <!--Chat area-->
-            <div class="span8">
-                <p>
-                    Message1<br>
-                    Message2<br>
-                    Message3<br>
-
-                    Message1<br>
-                    Message2<br>
-                    Message3<br>
-
-                    Message1<br>
-                    Message2<br>
-                    Message3<br>
-
-                </p>
-            </div>
-            <!--User list-->
-            <div class="span4">
-                <ul>
-                    <li>User1</li>
-                    <li>User2</li>
-                    <li>User3</li>
-                </ul>
-            </div>
+<form class="navbar-form pull-right" ng-submit="sendMessage()">
+    <div class="row">
+        <!--Chat area-->
+        <div class="span6 well">
+            <p ng-repeat="usrmsg in messages">
+                <b>{{usrmsg.username}}</b> :: {{usrmsg.text}}<br>
+            </p>
         </div>
-        <div class="row">
-            <!--Chat text box-->
-            <div class="span8">
-
-                <input type="text" class="span4">
-                <button type="submit" class="btn">Submit</button>
-
-            </div>
-
-            <div class="span4">
-
-            </div>
+        <!--User list-->
+        <div class="span4 well">
+            <p ng-repeat="usr in users">
+                <b>{{usr.username}}</b>
+            </p>
         </div>
-    </form>
-</div>
+    </div>
+    <div class="row">
+        <!--Chat text box-->
+        <div class="span8">
+
+            <input type="text" class="span4" ng-model="usrmsg">
+            <button type="submit" class="btn">Submit</button>
+
+        </div>
+
+        <div class="span4">
+
+        </div>
+    </div>
+</form>
