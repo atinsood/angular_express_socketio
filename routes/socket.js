@@ -32,6 +32,10 @@ module.exports = function (socket) {
             username: message.username,
             text: message.text
         });
+        socket.broadcast.emit('respond:message', {
+            username: message.username,
+            text: message.text
+        });
     });
 
 };
